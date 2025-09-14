@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Normateca Digital</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-shield-alt"></i> Normateca Digital
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                <li><a href="#aspectos-eticos" class="nav-link">Aspectos Éticos</a></li>
+                <li><a href="#estandares" class="nav-link">Estándares</a></li>
+                <li><a href="#aviso-privacidad" class="nav-link">Aviso de Privacidad</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <header id="inicio">
+        <h1 class="neon-text">NORMATECA DIGITAL</h1>
+        <p class="subtitle">Portal de normativas y estándares de información</p>
+        <div class="team-info">
+            <h3 style="color: #00ffff; margin-bottom: 1rem;">
+                <i class="fas fa-users"></i> Equipo de Desarrollo
+            </h3>
+            <p><strong>Brandon Gustavo Mendoza Amaro</strong></p>
+            <p><strong>Gerardo Manzano Villafaña</strong></p>
+            <p style="margin-top: 1rem; color: #00ffff;">Grupo: <strong>GIDS6072</strong></p>
+        </div>
+    </header>
+
+    <main>
+        <section id="aspectos-eticos">
+            <h2 class="section-title">
+                <i class="fas fa-balance-scale"></i> Aspectos Éticos y Legales
+            </h2>
+            
+            <div class="cards-container">
+                <div class="normativa-card">
+                    <div class="card-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>Ley General de Protección de Datos Personales</h3>
+                    <p>Establece los principios, derechos y obligaciones para el tratamiento legítimo de datos personales en México. Regula la recolección, uso, divulgación y almacenamiento de información personal.</p>
+                    <button class="neon-button" data-url="https://www.diputados.gob.mx/LeyesBiblio/pdf/LGPDPPSO.pdf">
+                        <i class="fas fa-external-link-alt"></i> Ver Normativa
+                    </button>
+                </div>
+                
+                <div class="normativa-card">
+                    <div class="card-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Ley de Propiedad Industrial</h3>
+                    <p>Regula las patentes, marcas, diseños industriales y otros derechos de propiedad industrial en México. Protege las innovaciones y signos distintivos empresariales.</p>
+                    <button class="neon-button" data-url="https://www.diputados.gob.mx/LeyesBiblio/pdf/LPI_200618.pdf">
+                        <i class="fas fa-external-link-alt"></i> Ver Normativa
+                    </button>
+                </div>
+                
+                <div class="normativa-card">
+                    <div class="card-icon">
+                        <i class="fas fa-copyright"></i>
+                    </div>
+                    <h3>Ley Federal del Derecho de Autor</h3>
+                    <p>Protege los derechos de los autores sobre sus obras literarias, artísticas, software y demás creaciones intelectuales. Garantiza la protección de la propiedad intelectual.</p>
+                    <button class="neon-button" data-url="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFDA_200618.pdf">
+                        <i class="fas fa-external-link-alt"></i> Ver Normativa
+                    </button>
+                </div>
+                
+                <div class="normativa-card">
+                    <div class="card-icon">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <h3>Código Penal Federal</h3>
+                    <p>Establece los delitos y las penas aplicables en materia federal, incluyendo delitos informáticos. Define las sanciones por uso indebido de tecnologías de información.</p>
+                    <button class="neon-button" data-url="https://www.diputados.gob.mx/LeyesBiblio/pdf/CPF_200618.pdf">
+                        <i class="fas fa-external-link-alt"></i> Ver Normativa
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="estandares">
+            <h2 class="section-title">
+                <i class="fas fa-cog"></i> Estándares del Manejo de Información
+            </h2>
+            
+            <div class="carousel-container">
+                <div class="carousel-arrow prev" onclick="previousSlide()">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="carousel-track" id="carousel-track">
+                    <div class="carousel-slide">
+                        <div class="normativa-card">
+                            <div class="card-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>ISO 27001</h3>
+                            <p>Estándar internacional para sistemas de gestión de seguridad de la información (SGSI). Proporciona un marco sistemático para gestionar información sensible y confidencial.</p>
+                            <button class="neon-button" data-url="https://www.iso.org/isoiec-27001-information-security.html">
+                                <i class="fas fa-external-link-alt"></i> Más Información
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <div class="normativa-card">
+                            <div class="card-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <h3>ISO/IEC 17799</h3>
+                            <p>Código de buenas prácticas para la gestión de la seguridad de la información. Ofrece directrices para establecer políticas y procedimientos de seguridad.</p>
+                            <button class="neon-button" data-url="https://www.iso.org/standard/39612.html">
+                                <i class="fas fa-external-link-alt"></i> Más Información
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <div class="normativa-card">
+                            <div class="card-icon">
+                                <i class="fas fa-sitemap"></i>
+                            </div>
+                            <h3>COBIT</h3>
+                            <p>Marco de gobierno y gestión de TI para el control y la gestión de tecnologías de información. Ayuda a las organizaciones a crear valor a través de TI.</p>
+                            <button class="neon-button" data-url="https://www.isaca.org/resources/cobit">
+                                <i class="fas fa-external-link-alt"></i> Más Información
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <div class="normativa-card">
+                            <div class="card-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <h3>NIST</h3>
+                            <p>Marco de seguridad cibernética del Instituto Nacional de Estándares y Tecnología de EE.UU. Proporciona estándares y directrices para mejorar la ciberseguridad.</p>
+                            <button class="neon-button" data-url="https://www.nist.gov/cyberframework">
+                                <i class="fas fa-external-link-alt"></i> Más Información
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <div class="normativa-card">
+                            <div class="card-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h3>ITIL</h3>
+                            <p>Conjunto de prácticas para la gestión de servicios de TI alineados con las necesidades del negocio. Mejora la eficiencia y calidad de los servicios tecnológicos.</p>
+                            <button class="neon-button" data-url="https://www.axelos.com/best-practice-solutions/itil">
+                                <i class="fas fa-external-link-alt"></i> Más Información
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-arrow next" onclick="nextSlide()">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            
+            <div class="carousel-nav">
+                <button class="carousel-btn active" data-slide="0" onclick="goToSlide(0)">ISO 27001</button>
+                <button class="carousel-btn" data-slide="1" onclick="goToSlide(1)">ISO 17799</button>
+                <button class="carousel-btn" data-slide="2" onclick="goToSlide(2)">COBIT</button>
+                <button class="carousel-btn" data-slide="3" onclick="goToSlide(3)">NIST</button>
+                <button class="carousel-btn" data-slide="4" onclick="goToSlide(4)">ITIL</button>
+            </div>
+        </section>
+
+        <section id="aviso-privacidad">
+            <h2 class="section-title">
+                <i class="fas fa-user-lock"></i> Aviso de Privacidad
+            </h2>
+            
+            <div class="normativa-card">
+                <div class="card-icon">
+                    <i class="fas fa-file-contract"></i>
+                </div>
+                <h3>Política de Privacidad</h3>
+                <p>De acuerdo con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, hacemos de su conocimiento que los datos personales que nos proporcione serán utilizados para fines de contacto, prestación de servicios educativos y comunicación académica.</p>
+                
+                <p><strong>Datos que recopilamos:</strong></p>
+                <p>• Nombre completo y datos de contacto<br>
+                • Correo electrónico institucional<br>
+                • Información académica relacionada con el proyecto<br>
+                • Datos de navegación en nuestro sitio web</p>
+                
+                <p><strong>Para ejercer sus derechos ARCO (acceso, rectificación, cancelación u oposición) puede contactarnos a través de:</strong></p>
+                <p>📧 <strong>Correo electrónico:</strong> privacidad@normatecadigital.edu.mx<br>
+                🌐 <strong>Página web:</strong> www.normatecadigital.edu.mx/privacidad<br>
+                📱 <strong>Teléfono:</strong> +52 (55) 1234-5678</p>
+                
+                <p>Nos reservamos el derecho de modificar este aviso de privacidad en cualquier momento. Los cambios serán comunicados a través de nuestro sitio web oficial.</p>
+                
+                <p style="margin-top: 1.5rem; color: #00ffff;"><strong>Última actualización:</strong> Septiembre 2025</p>
+            </div>
+        </section>
+    </main>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <iframe id="modal-iframe" src="" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <footer>
+        <p>
+            <i class="fas fa-shield-alt"></i> 
+            Normateca Digital &copy; 2025 - Todos los derechos reservados
+        </p>
+        <p style="margin-top: 0.5rem; color: #00ffff;">
+            Desarrollado por Brandon Mendoza & Gerardo Manzano - Grupo GIDS6072
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
