@@ -21,43 +21,39 @@ const slides = document.querySelectorAll('.carousel-slide');
 const buttons = document.querySelectorAll('.carousel-btn');
 const totalSlides = slides.length;
 
-function updateSlideClasses() {
-    slides.forEach((slide, index) => {
-        slide.classList.remove('active', 'prev', 'next');
-        
-        if (index === currentSlide) {
-            slide.classList.add('active');
-        } else if (index === (currentSlide - 1 + totalSlides) % totalSlides) {
-            slide.classList.add('prev');
-        } else if (index === (currentSlide + 1) % totalSlides) {
-            slide.classList.add('next');
-        }
+function updateCarousel() {
+    // Hide all slides first
+    slides.forEach(slide => {
+        slide.classList.remove('active');
     });
+
+    // Show the active slide
+    slides[currentSlide].classList.add('active');
 
     // Update navigation buttons
     buttons.forEach((btn, index) => {
         btn.classList.toggle('active', index === currentSlide);
     });
-
-    // Update carousel track position
+    
+    // Update carousel track position for the new design
     const track = document.getElementById('carousel-track');
-    const offset = currentSlide * -370; // 350px width + 20px margin
-    track.style.transform = `translateX(${offset + 370}px)`; // Center the active slide
+    const slideWidth = slides[0].offsetWidth + (parseFloat(window.getComputedStyle(slides[0]).marginLeft) * 2);
+    track.style.transform = `translateX(${-currentSlide * slideWidth}px)`;
 }
 
 function goToSlide(slideIndex) {
     currentSlide = slideIndex;
-    updateSlideClasses();
+    updateCarousel();
 }
 
 function nextSlide() {
     currentSlide = (currentSlide + 1) % totalSlides;
-    updateSlideClasses();
+    updateCarousel();
 }
 
 function previousSlide() {
     currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-    updateSlideClasses();
+    updateCarousel();
 }
 
 // Auto-slide functionality
@@ -75,26 +71,27 @@ carouselContainer.addEventListener('mouseleave', () => {
 
 // Touch/swipe support for mobile
 let startX = 0;
-let currentX = 0;
 let isDragging = false;
+let startTouchTime = 0;
 
 carouselContainer.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
+    startTouchTime = new Date().getTime();
     isDragging = true;
     clearInterval(autoSlideInterval);
 });
 
-carouselContainer.addEventListener('touchmove', (e) => {
-    if (!isDragging) return;
-    currentX = e.touches[0].clientX;
-});
-
-carouselContainer.addEventListener('touchend', () => {
+carouselContainer.addEventListener('touchend', (e) => {
     if (!isDragging) return;
     
-    const diffX = startX - currentX;
+    const endX = e.changedTouches[0].clientX;
+    const diffX = startX - endX;
+    const swipeTime = new Date().getTime() - startTouchTime;
     
-    if (Math.abs(diffX) > 50) { // Minimum swipe distance
+    const minDistance = 50;
+    const maxTime = 300;
+    
+    if (Math.abs(diffX) > minDistance && swipeTime < maxTime) {
         if (diffX > 0) {
             nextSlide();
         } else {
@@ -107,7 +104,7 @@ carouselContainer.addEventListener('touchend', () => {
 });
 
 // Initialize
-updateSlideClasses();
+updateCarousel();
 
 // Modal functionality with fallback
 const modal = document.getElementById('modal');
@@ -155,7 +152,7 @@ function openFloatingWindow(url, title = 'Documento') {
         newWindow.focus();
         showNotification(`${title} abierto en ventana flotante`);
     } else {
-        showNotification('Por favor, permite ventanas emergentes para ver el documento');
+        showNotification('Por favor, permite ventanas emergentes para ver el documento', 'warning');
     }
     
     return newWindow;
@@ -166,22 +163,13 @@ document.querySelectorAll('.neon-button').forEach(button => {
         const url = e.target.closest('.neon-button').getAttribute('data-url');
         if (url) {
             // Verificar si el dominio permite iframe
-            if (canUseIframe(url)) {
+            if (url.includes('gob.mx') || url.includes('diputados.gob.mx') || url.includes('wordpress.com') || url.includes('nqa.com')) {
+                openFloatingWindow(url, 'Documento Legal');
+            } else {
                 modalIframe.src = url;
                 modal.style.display = 'block';
                 document.body.style.overflow = 'hidden';
                 showNotification('Documento cargado en ventana modal');
-            } else {
-                // Abrir en ventana flotante para sitios que no permiten iframe
-                let title = 'Documento Legal';
-                
-                // Determinar el título basado en la URL
-                if (url.includes('LGPDPPSO')) title = 'Ley de Protección de Datos';
-                else if (url.includes('LPI_')) title = 'Ley de Propiedad Industrial';
-                else if (url.includes('LFDA_')) title = 'Ley Federal de Derechos de Autor';
-                else if (url.includes('CPF_')) title = 'Código Penal Federal';
-                
-                openFloatingWindow(url, title);
             }
         }
     });

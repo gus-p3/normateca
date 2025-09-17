@@ -212,59 +212,32 @@ section {
     color: #d0d0d0;
 }
 
-/* Carousel Container */
+/* CAROUSEL REDISEÑO */
 .carousel-container {
     position: relative;
     width: 100%;
-    max-width: 1200px;
+    max-width: 800px; /* Ancho máximo para el carrusel */
     margin: 0 auto;
-    perspective: 1000px;
-    overflow: visible;
+    overflow: hidden;
 }
 
 .carousel-track {
     display: flex;
-    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    transform-style: preserve-3d;
-    position: relative;
-    height: 100%;
-    align-items: center;
+    transition: transform 0.8s ease-in-out;
 }
 
 .carousel-slide {
-    min-width: 350px;
-    max-width: 350px;
-    margin: 0 20px;
-    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    transform-origin: center;
-    opacity: 0.6;
-    scale: 0.85;
-    z-index: 1;
+    min-width: 100%; /* Cada slide ocupa el 100% del contenedor */
+    max-width: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
 }
 
 .carousel-slide.active {
     opacity: 1;
-    scale: 1;
-    z-index: 10;
-    transform: translateZ(50px);
 }
 
-.carousel-slide.prev,
-.carousel-slide.next {
-    opacity: 0.4;
-    scale: 0.75;
-    z-index: 5;
-}
-
-.carousel-slide.prev {
-    transform: translateX(-30px) rotateY(15deg) translateZ(-50px);
-}
-
-.carousel-slide.next {
-    transform: translateX(30px) rotateY(-15deg) translateZ(-50px);
-}
-
-/* Card Styles */
+/* Card Styles for Carousel */
 .carousel-slide .normativa-card {
     background: linear-gradient(145deg, 
         rgba(0, 255, 255, 0.05),
@@ -274,7 +247,7 @@ section {
     border: 2px solid rgba(0, 255, 255, 0.3);
     border-radius: 25px;
     padding: 2.5rem;
-    height: 100%;
+    min-height: 500px; /* Altura mínima para que se vea bien en todas las tarjetas */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -357,8 +330,11 @@ section {
     color: rgba(255, 255, 255, 0.9);
     margin-bottom: 2rem;
     flex-grow: 1;
-    display: flex;
-    align-items: center;
+    display: block; /* Cambio importante para el flujo de texto */
+    text-align: left;
+}
+.carousel-slide .normativa-card p:first-of-type {
+    margin-bottom: 0.5rem;
 }
 
 /* Enhanced Button */
@@ -623,10 +599,9 @@ footer {
     }
     
     .carousel-slide {
-        min-width: 300px;
-        max-width: 300px;
-        height: 400px;
-        margin: 0 10px;
+        min-width: 100%;
+        max-width: 100%;
+        min-height: auto;
     }
     
     .normativa-card {
@@ -634,7 +609,8 @@ footer {
     }
     
     .carousel-arrow {
-        display: none;
+        left: 1rem;
+        right: 1rem;
     }
     
     .section-title {
@@ -648,9 +624,8 @@ footer {
     }
     
     .carousel-slide {
-        min-width: 280px;
-        max-width: 280px;
-        height: 380px;
+        min-width: 100%;
+        max-width: 100%;
     }
     
     .normativa-card h3 {
@@ -664,6 +639,12 @@ footer {
     .carousel-btn {
         padding: 0.6rem 1rem;
         font-size: 0.9rem;
+    }
+
+    .carousel-arrow {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
     }
 }
 
